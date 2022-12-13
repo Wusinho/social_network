@@ -1,7 +1,4 @@
-class HomeController < ApplicationController
-  def index
-    @post = Post.new
-  end
+class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
