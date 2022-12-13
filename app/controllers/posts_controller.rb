@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
 
     if @post.save
       p 'saved'
     else
+      debugger
       p 'not saved'
     end
 
