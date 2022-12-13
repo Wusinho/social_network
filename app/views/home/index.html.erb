@@ -1,5 +1,18 @@
 <h1>Hello World!</h1>
 
+
+
 <% if user_signed_in? %>
   <%= render 'new_post', post: @post %>
 <%end %>
+
+<div class="container">
+  <% @posts.each do |post| %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h6 class="card-text"><%=post.body %></h6>
+        <p class="card-text"><%= post.user.username %></p>
+      </div>
+    </div>
+<% end %>
+</div>
