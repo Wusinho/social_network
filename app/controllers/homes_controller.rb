@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
   def index
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.newest_first
   end
 
   def new
