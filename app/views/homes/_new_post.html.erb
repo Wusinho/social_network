@@ -1,5 +1,5 @@
 <%= turbo_frame_tag 'new_post', target: '_top' do %>
-  <%= form_for(post, url: homes_path, data: { turbo: false }) do |f| %>
+  <%= form_for(post, url: homes_path, data: { turbo: false } ) do |f| %>
       <div class="mb-3">
         <%= f.text_area :body%>
       </div>

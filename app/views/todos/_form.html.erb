@@ -1,16 +1,5 @@
-<%= form_for(Todo.new, url: todos_path) do |form| %>
-  <%# if todo.errors.any? %>
-<!--    <div style="color: red">-->
-<!--      <h2><%#= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>-->
-
-<!--      <ul>-->
-        <%# todo.errors.each do |error| %>
-<!--          <li><%#= error.full_message %></li>-->
-        <%# end %>
-<!--      </ul>-->
-<!--    </div>-->
-  <%# end %>
-
+<div class="py-4">
+<%= form_for(todo, url: todos_path, :html=> {id: "#{dom_id todo}" } ) do |form| %>
   <div>
     <%= form.label :body, style: "display: block" %>
     <%= form.text_area :body %>
@@ -20,3 +9,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>

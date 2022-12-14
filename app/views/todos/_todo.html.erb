@@ -1,7 +1,8 @@
-<div id="<%= dom_id todo %>">
-  <p>
-    <strong>Body:</strong>
-    <%= todo.body %>
-  </p>
-
+<div class="card" style="width: 18rem;" id="<%= dom_id todo %>">
+  <div class="card-body">
+    <p class="card-text"><%= todo.body %></p>
+    <blockquote class="blockquote mb-0">
+      <footer class="blockquote-footer text-end"><%= todo.creator.username %></footer>
+    </blockquote>
+  </div>
 </div>

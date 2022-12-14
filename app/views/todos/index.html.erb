@@ -1,7 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Todos</h1>
+<%= render "form", todo: @todo %>
 
-<%= render @todos %>
+<div id="todos">
+  <%= render @todos %>
+</div>
 
-<%= link_to "New todo", new_todo_path %>
+
+<%#= link_to "New todo", new_todo_path %>
+<%#= turbo_frame_tag 'new_todo', src: new_todo_path, target: '_top' %>

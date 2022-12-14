@@ -3,6 +3,7 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
+    @todo = Todo.new
     @todos = Todo.newest
   end
 
