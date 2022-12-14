@@ -1,12 +1,13 @@
 <div class="py-4">
-<%= form_for(todo, url: todos_path, :html=> {id: "#{dom_id todo}" } ) do |form| %>
+<%#= form_for(todo, url: todos_path, :html=> {id: "#{dom_id todo}" } ) do |form| %>
+    <%= form_with(model: todo, id: "#{dom_id todo}") do |form| %>
   <div>
     <%= form.label :body, style: "display: block" %>
     <%= form.text_area :body %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
 </div>

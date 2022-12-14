@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render "form", todo: @todo %>
+<%= turbo_frame_tag @todo do %>
+  <%= render "form", todo: @todo %>
+<% end %>
+
 
 <div id="todos">
   <%= render @todos %>
