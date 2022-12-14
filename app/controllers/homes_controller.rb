@@ -1,7 +1,11 @@
-class PostsController < ApplicationController
+class HomesController < ApplicationController
+  def index
+    @post = Post.new
+    @posts = Post.all
+  end
 
-  def show
-
+  def new
+    @post = current_user.posts.new
   end
 
   def create
@@ -13,7 +17,6 @@ class PostsController < ApplicationController
         format.html { redirect_to root_path}
       end
     end
-
   end
 
   private

@@ -1,0 +1,11 @@
+<%= turbo_frame_tag 'new_post', target: '_top' do%>
+  <%= form_for(post, url: posts_path, data: { turbo: false }) do |f| %>
+      <div class="mb-3">
+        <%= f.text_area :body%>
+      </div>
+
+      <div class="mb-3">
+          <%= f.submit "Post", class: 'btn btn-primary' %>
+      </div>
+  <% end %>
+<% end %>
