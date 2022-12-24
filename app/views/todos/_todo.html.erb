@@ -2,7 +2,9 @@
   <div class="card-body">
     <p class="card-text"><%= todo.body %></p>
     <blockquote class="blockquote mb-0">
-      <footer class="blockquote-footer text-end"><%= todo.creator.username %></footer>
+      <footer class="blockquote-footer text-end">
+        <%= link_to todo.creator.username, profile_path(todo.creator), class: 'link-secondary text-decoration-none' %>
+      </footer>
     </blockquote>
   </div>
 </div>

@@ -1,8 +1,19 @@
 class InvitationsController < ApplicationController
 
   def index
-    @users = User.where.not(id: current_user)
+    @users = current_user.valid_friends
     @pending_invitations = current_user.pending_invitations
+    @friends = current_user.friends
+  end
+
+  def active
+    @invitation = Invitation.find(params[:id])
+    @invitation.update(confirmed: !@invitation.confirmed)
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to root_path, notice: "Invitation was successfully accepted." }
+
+    end
   end
 
   def new
