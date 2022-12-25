@@ -2,8 +2,10 @@
   <div class="container-fluid px-4">
     <% if user_signed_in? %>
         <%= link_to current_user.username, root_path, class: "navbar-brand"  %>
-        <%= link_to 'Invitations', invitations_path, class: "navbar-brand"  %>
+      <div class="d-flex">
+        <%= render 'shared/friends_list', friends: current_user.friends %>
         <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-danger'%>
+      </div>
       <%else %>
         <%= link_to 'Home', root_path, class: "navbar-brand"  %>
       <div class="d-flex nav__container--session justify-content-between">

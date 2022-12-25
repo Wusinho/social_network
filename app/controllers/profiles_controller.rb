@@ -1,8 +1,8 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile
+  before_action :set_profile, only: %i[ show ]
 
   def show
-    @user
+    @friends = current_user.friend_with?(@user)
   end
 
   private

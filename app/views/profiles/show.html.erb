@@ -1,2 +1,6 @@
-<%= @user.username %>
-<%= @user.id %>
+<h2>
+  <%= @user.username %>
+</h2>
+<% unless @friends %>
+  <%= button_to 'Add Friend', {:controller => "invitations", :action => "create", :friend_id => @user.id } , :method=>:post, class: 'btn btn-primary'  %>
+<% end %>

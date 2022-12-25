@@ -2,24 +2,10 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <h2>Invitations</h2>
-      <% @users.each do |user| %>
-        <p>Invite as a friend:</p>
-        <%= button_to user.username, {:controller => "invitations", :action => "create", :friend_id => user.id } , :method=>:post, class: 'btn btn-primary'  %>
-      <% end %>
     </div>
     <div class="col-sm">
-      <h2>Pending invites</h2>
-      <% @pending_invitations.each do |invitation| %>
-        <div><%=invitation.user.username %> wants to be your friend:
-        <%= check_box_tag invitation.user.username, invitation.confirmed, invitation.confirmed,
-                          data: {id: invitation.id, controller: 'check', action: 'check#active' }
-        %>
-        </div>
-      <% end %>
     </div>
     <div class="col-sm">
-      <h2>Friends</h2>
       <% @friends.each do |friend| %>
       <p>
         <%= friend.username %>

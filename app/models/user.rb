@@ -22,6 +22,8 @@ class User < ApplicationRecord
   end
 
   def friend_with?(user)
+    return true if self == user
+
     Invitation.confirmed_record?(id, user.id)
   end
 

@@ -1,0 +1,23 @@
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Friends
+  </button>
+
+  <ul class="dropdown-menu">
+    <% if friends.empty? %>
+      <li>
+        <a class="dropdown-item disabled">
+          No Friends yet
+        </a>
+      </li>
+      <%else %>
+        <% friends.each do |friend| %>
+          <li>
+              <%= link_to friend.username, "#", data: {toggle: "modal", target: "#modal"}, class:'dropdown-item' %>
+          </li>
+        <% end %>
+      <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+    <% end %>
+  </ul>
+</div>
