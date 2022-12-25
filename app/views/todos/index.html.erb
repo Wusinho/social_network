@@ -1,19 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<% if user_signed_in? %>
-
-<%= turbo_frame_tag @todo do %>
-  <div class="form__container">
-    <%= render "form", todo: @todo %>
+<div class="row">
+  <div class="col-sm">
+    <% if user_signed_in? %>
+      <%= turbo_frame_tag @todo do %>
+        <div class="form__container">
+          <%= render "form", todo: @todo %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-<% end %>
-<% end %>
-
-
-<div id="todos">
-  <%= render @todos %>
+  <div class="col-sm">
+    <div id="todos">
+      <%= render @todos %>
+    </div>
+  </div>
+  <div class="col-sm"></div>
 </div>
-
-
-<%#= link_to "New todo", new_todo_path %>
-<%#= turbo_frame_tag 'new_todo', src: new_todo_path, target: '_top' %>
