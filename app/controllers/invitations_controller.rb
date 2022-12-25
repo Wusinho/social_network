@@ -9,11 +9,12 @@ class InvitationsController < ApplicationController
   def active
     @invitation = Invitation.find(params[:id])
     @invitation.update(confirmed: !@invitation.confirmed)
-    Room.create(user_id: current_user.id, friend_id: params[:id])
+    @invitation.save!
+    debugger
+    Room.create(user_id: @invitation.user_id, friend_id: @invitation.friend_id)
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to root_path, notice: "Invitation was successfully accepted." }
-
     end
   end
 

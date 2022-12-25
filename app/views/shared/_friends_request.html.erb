@@ -1,0 +1,28 @@
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Friends Requests
+  </button>
+
+  <ul class="dropdown-menu">
+    <% if requests.empty? %>
+      <li>
+        <a class="dropdown-item disabled">
+          No Friends yet
+        </a>
+      </li>
+    <%else %>
+      <% requests.each do |request| %>
+        <li>Accept <%= request.user.username %> request
+          <%= button_to 'Accept', complete_invitation_path(request.id), method: :post , class:'btn btn-primary' %>
+        </li>
+      <% end %>
+
+      <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+    <% end %>
+  </ul>
+</div>
+
+
+
+
