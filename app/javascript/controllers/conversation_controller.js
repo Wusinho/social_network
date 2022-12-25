@@ -7,7 +7,6 @@ export default class extends Controller {
   }
   active(event){
     const id = event.target.dataset.id
-    console.log(id)
     fetch(`/rooms/${id}`,{
       method: 'Get',
       mode: 'cors',
@@ -16,7 +15,7 @@ export default class extends Controller {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(r=>console.log(r))
-      // .then(Turbo.renderStreamMessage)
+    }).then(r=>r.text())
+      .then(Turbo.renderStreamMessage)
   }
 }
