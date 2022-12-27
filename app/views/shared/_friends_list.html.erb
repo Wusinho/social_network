@@ -12,33 +12,15 @@
         </a>
       </li>
       <%else %>
+      <%= turbo_frame_tag 'chat_room' do %>
+
         <% friends.each do |friend| %>
           <li>
-              <%= link_to friend.username, '#',
-                          data: {id: friend.id, controller: 'conversation', action: 'conversation#active'},
-                          class:'link-secondary text-decoration-none'
-              %>
+              <%= link_to friend.username, chat_path(friend.id), data: { turbo_frame: 'chat'} %>
           </li>
         <% end %>
-      <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+      <% end %>
+
     <% end %>
   </ul>
-</div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>

@@ -10,7 +10,6 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.find(params[:id])
     @invitation.update(confirmed: !@invitation.confirmed)
     @invitation.save!
-    debugger
     Room.create(user_id: @invitation.user_id, friend_id: @invitation.friend_id)
     respond_to do |format|
       format.turbo_stream

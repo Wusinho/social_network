@@ -20,6 +20,15 @@ class TodosController < ApplicationController
   def edit
   end
 
+  def chat
+    @room = Room.finder(current_user.id, params[:id])
+    @chat = Message.where(room_id: @room.id)
+    # respond_to do |format|
+    #   format.turbo_stream #{ render partial: 'todos/chat', locals: { chat: @chat}}
+    #   format.html { redirect_to root_path, notice: "Todo was successfully created." }
+    # end
+  end
+
   # POST /todos or /todos.json
   def create
     @todo = current_user.todos.build(todo_params)
@@ -27,7 +36,7 @@ class TodosController < ApplicationController
     respond_to do |format|
       if @todo.save
         format.turbo_stream
-        format.html { redirect_to root_path, notice: "Todo was successfully created." }
+        # format.html { redirect_to root_path, notice: "Todo was successfully created." }
         # format.json { render :show, status: :created, location: @todo }
       else
         format.html { render :new, status: :unprocessable_entity }

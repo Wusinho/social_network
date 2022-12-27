@@ -1,0 +1,22 @@
+
+<h1>THIS IS CHAT MODAL <%= @room.id %></h1>
+<div>
+  <% chat.each do |message| %>
+  <p><%= message.content %></p>
+  <% end %>
+
+
+  <%= form_with(model: Message.new, id: "message_form") do |form| %>
+    <div>
+      <%= form.text_area :content, class: 'input__todo' %>
+    </div>
+
+    <%= form.hidden_field :room_id, value: @room.id %>
+
+
+    <div>
+      <%= form.submit 'send', class: 'btn btn-primary btn__todo' %>
+    </div>
+  <% end %>
+
+</div>

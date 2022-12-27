@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
   resource :homes
   resources :invitations
+  resources :messages
   resources :rooms, only: [:show]
+  get 'todos/:id/chat' => 'todos#chat', as: :chat
   root 'todos#index'
   post 'invitations/:id/active' => 'invitations#active', as: :complete_invitation
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :room do
-    user { nil }
+    user
     friend_id { 1 }
   end
 end

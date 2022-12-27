@@ -2,7 +2,9 @@ class User < ApplicationRecord
   has_many :posts
   has_many :todos
   has_many :invitations
+  has_many :messages
   has_many :pending_invitations, -> { where confirmed: false }, class_name: 'Invitation', foreign_key: 'friend_id'
+  validates :username, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -10,7 +12,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def valid_friends
-    User.where.not(id: id).where.not(id: friends)
+    User.where.not(id: self.id).where.not(id: self.friends)
   end
 
 
