@@ -4,8 +4,10 @@ class MessagesController < ApplicationController
     @message = current_user.messages.build(messages_params)
 
     if @message.save
-      puts '*'*100
-      puts 'saved'
+      ActionCable.server.broadcast 'room_channel', {
+        content: @message.content,
+        current_user: current_user.username
+      }
     else
       puts 'not saved'
     end

@@ -10,6 +10,13 @@ consumer.subscriptions.create("RoomChannel", {
   },
 
   received(data) {
+    const chat_room = document.querySelector('.chat__room')
+    const input_msg = document.querySelector('#message_form')
+    input_msg.reset();
+    let p_element = document.createElement("p")
+    p_element.append(`${data.current_user}: ${data.content}`)
+    chat_room.append(p_element)
+
     // Called when there's incoming data on the websocket for this channel
   }
 });

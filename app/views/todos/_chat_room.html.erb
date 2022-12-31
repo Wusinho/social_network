@@ -1,13 +1,15 @@
 
 <div class="border border-success rounded p-2">
-  <% chat.each do |message| %>
-  <p><%= message.user.username %>: <%= message.content %></p>
-  <% end %>
+  <div class=" chat__room">
+    <% chat.each do |message| %>
+        <p><%= message.user.username %>: <%= message.content %></p>
+    <% end %>
+  </div>
 
 
   <%= form_with(model: Message.new, id: "message_form") do |form| %>
     <div>
-      <%= form.text_field :content, class: 'input__todo' %>
+      <%= form.text_field :content, class: 'input__message' %>
       <%= form.hidden_field :room_id, value: @room.id %>
       <%= form.submit 'send', class: 'btn btn-primary btn__todo' %>
     </div>
