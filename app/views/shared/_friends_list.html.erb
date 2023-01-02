@@ -15,8 +15,15 @@
       <%= turbo_frame_tag 'chat_room' do %>
 
         <% friends.each do |friend| %>
-          <li>
-              <%= link_to friend.username, chat_path(friend.id), data: { turbo_frame: 'chat'} %>
+          <li class="d-flex">
+              <%= link_to friend.username, chat_path(friend.id), data: { turbo_frame: 'chat'}, class: 'ps-2 pe-1' %>
+            <div class="position-relative">
+              <% if friend.is_signed_in %>
+                  <span class="position-absolute p-2 bg-success border border-light rounded-circle"></span>
+                <% else %>
+                  <span class="position-absolute p-2 bg-danger border border-light rounded-circle"> </span>
+              <% end %>
+            </div>
           </li>
         <% end %>
       <% end %>
