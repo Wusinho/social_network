@@ -22,3 +22,44 @@
 .post__form {
   width: 400px;
 }
+
+.chat__container {
+  position: absolute;
+  bottom: 0;
+}
+
+.chat__room {
+  height: 80vh;
+  overflow-y: scroll;
+  .message {
+    min-height: 49px;
+    //margin-bottom: 25px;
+    margin: 0 10px 25px 10px;
+    //min-width: 70%;
+    .content-container {
+      display: inline-block;
+      position: relative;
+      .content {
+        background-color: #eee;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .created {
+        font-size: 0.8rem;
+        font-style: italic;
+        color: #777;
+        position: absolute;
+        right: 0;
+      }
+    }
+    &.me {
+      .content-container {
+        float: right;
+        .content {
+          background-color: #007bff;
+          color: white;
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,13 @@
 module TodosHelper
 
-  def friend_list(friend)
-    content_tag(:link, friend.username ,chat_path(friend.id), data: { turbo_frame: 'chat'}, class: 'position-relative ps-2 pe-1')do
-      content_tag('span', '', class: sign_in_badget(friend.is_signed_in))
+  def message__chat(user)
+    base = 'message '
+    if user == current_user
+      base += 'me'
+    else
+      base += 'mb-3'
     end
+    base
   end
 
   def sign_in_badget(online)

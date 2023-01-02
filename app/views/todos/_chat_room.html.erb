@@ -3,7 +3,7 @@
   <button type="button" class="btn-close" ></button>
   <div class=" chat__room">
     <% chat.each do |message| %>
-        <p><%= message.user.username %>: <%= message.content %></p>
+      <%= render 'message_chat', message: message %>
     <% end %>
   </div>
 
