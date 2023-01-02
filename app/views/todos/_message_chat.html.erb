@@ -1,6 +1,6 @@
 <%= content_tag :div, class: message__chat(message.user)  do %>
   <%= content_tag :div, class: 'content-container' do %>
-    <%= content_tag :p, "#{message.user.username}: #{message.content}", class: 'content' %>
+    <%= content_tag :div, "#{message.user.username}: #{message.content}", class: 'content' %>
       <%= content_tag :footer, class: 'created' do  %>
         <%= content_tag :cite, message.created_at %>
       <% end %>

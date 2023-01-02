@@ -2,11 +2,7 @@ module TodosHelper
 
   def message__chat(user)
     base = 'message '
-    if user == current_user
-      base += 'me'
-    else
-      base += 'mb-3'
-    end
+    base += 'me' if user == current_user
     base
   end
 
