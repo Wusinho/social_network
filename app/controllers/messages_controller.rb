@@ -6,7 +6,8 @@ class MessagesController < ApplicationController
     if @message.save
       ActionCable.server.broadcast 'room_channel', {
         content: @message.content,
-        current_user: current_user.username
+        created_at: @message.created_at,
+        current_user: current_user.username,
       }
     else
       puts 'not saved'

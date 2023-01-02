@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :todos
   resources :profiles
-  devise_for :users
+  # devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   resource :homes
   resources :invitations
   resources :messages
