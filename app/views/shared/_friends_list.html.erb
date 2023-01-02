@@ -13,20 +13,17 @@
       </li>
       <%else %>
       <%= turbo_frame_tag 'chat_room' do %>
-
+        <div class="chat_room">
         <% friends.each do |friend| %>
-          <li class="d-flex">
-              <%= link_to friend.username, chat_path(friend.id), data: { turbo_frame: 'chat'}, class: 'ps-2 pe-1' %>
+          <li class="d-flex align-items-center">
+              <%= link_to friend.username, chat_path(friend.id), data: { turbo_frame: 'chat'}, class: 'ps-1 pe-3 text-decoration-none' %>
             <div class="position-relative">
-              <% if friend.is_signed_in %>
-                  <span class="position-absolute p-2 bg-success border border-light rounded-circle"></span>
-                <% else %>
-                  <span class="position-absolute p-2 bg-danger border border-light rounded-circle"> </span>
-              <% end %>
+                <%= content_tag('span', '', class: sign_in_badget(friend.is_signed_in)) %>
             </div>
           </li>
         <% end %>
       <% end %>
+      </div>
 
     <% end %>
   </ul>
