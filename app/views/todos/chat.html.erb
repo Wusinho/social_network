@@ -1,5 +1,7 @@
 
 
 <%= turbo_frame_tag "chat" do %>
+  <div id="chat_box">
     <%= render "chat_room", chat: @chat, room: @room %>
+  </div>
 <% end %>

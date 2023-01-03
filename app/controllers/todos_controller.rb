@@ -21,12 +21,8 @@ class TodosController < ApplicationController
   end
 
   def chat
-    @room = Room.finder(current_user.id, params[:id])
-    @chat = Message.where(room_id: @room.id).order(created_at: :desc)
-    # respond_to do |format|
-    #   format.turbo_stream #{ render partial: 'todos/chat', locals: { chat: @chat}}
-    #   format.html { redirect_to root_path, notice: "Todo was successfully created." }
-    # end
+    @room = Room.find(params[:id])
+    @chat = Message.where(room_id: params[:id]).order(created_at: :desc)
   end
 
   # POST /todos or /todos.json

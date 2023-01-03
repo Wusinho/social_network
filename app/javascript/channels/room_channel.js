@@ -1,22 +1,33 @@
 import consumer from "channels/consumer"
 
-consumer.subscriptions.create("RoomChannel", {
+const friends_link = document.querySelector('.friend__links');
+friends_link.addEventListener('click', (e) => {
+
+  const link = e.target.href
+  const numbers = link.match(/\d+/g);
+  const room_number = numbers[numbers.length - 1]
+  chat_room( room_number)
+});
+    let chat_room = (room_id) =>  consumer.subscriptions.create(
+  { channel: "RoomChannel", room_id: room_id},
+  {
   connected() {
-    // Called when the subscription is ready for use on the server
   },
 
   disconnected() {
-    // Called when the subscription has been terminated by the server
   },
 
   received(data) {
-    const chat_room = document.querySelector('.chat__room')
-    const input_msg = document.querySelector('#message_form')
+    const chat_room = document.querySelector('.chat__room');
+    const user_id = Number(chat_room.getAttribute('data-user-id'));
+    const input_msg = document.querySelector('#message_form');
     input_msg.reset();
 
-    let message__div = document.createElement("div")
+    console.log(data)
+    let message__div = document.createElement("div");
     message__div.classList.add('message');
-    message__div.classList.add('me');
+    if (user_id === data.author_id) message__div.classList.add('me');
+
     let content__container = document.createElement('div')
     content__container.classList.add('content-container')
 
@@ -36,7 +47,6 @@ consumer.subscriptions.create("RoomChannel", {
     content__container.append(content__footer)
     message__div.append((content__container))
     chat_room.prepend(message__div)
-    console.log(message__div)
-    // Called when there's incoming data on the websocket for this channel
   }
 });
+// });

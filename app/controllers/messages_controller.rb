@@ -4,8 +4,10 @@ class MessagesController < ApplicationController
     @message = current_user.messages.build(messages_params)
 
     if @message.save
-      ActionCable.server.broadcast 'room_channel', {
+      ActionCable.server.broadcast "room_channel_#{params[:message][:room_id]}",
+                                   {
         content: @message.content,
+        author_id: @message.user.id,
         created_at: created_format(@message),
         current_user: current_user.username,
       }
