@@ -2,7 +2,7 @@
   <%= content_tag :div, class: 'content-container' do %>
     <%= content_tag :div, "#{message.user.username}: #{message.content}", class: 'content' %>
       <%= content_tag :footer, class: 'created' do  %>
-        <%= content_tag :cite, message.created_at %>
+        <%= content_tag :cite, created_format(message) %>
       <% end %>
   <% end %>
 <% end %>
