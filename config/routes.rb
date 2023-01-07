@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_posts
   resources :todos
   resources :profiles
   # devise_for :users

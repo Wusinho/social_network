@@ -12,6 +12,7 @@ friends_link.addEventListener('click', (e) => {
   { channel: "RoomChannel", room_id: room_id},
   {
   connected() {
+    console.log(consumer)
   },
 
   disconnected() {
@@ -23,7 +24,6 @@ friends_link.addEventListener('click', (e) => {
     const input_msg = document.querySelector('#message_form');
     input_msg.reset();
 
-    console.log(data)
     let message__div = document.createElement("div");
     message__div.classList.add('message');
     if (user_id === data.author_id) message__div.classList.add('me');

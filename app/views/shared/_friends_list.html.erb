@@ -15,10 +15,12 @@
       <%= turbo_frame_tag 'chat_room' do %>
         <div class="chat_room friend__links">
         <% friends.each do |friend| %>
-          <li class="d-flex align-items-center">
-              <%= link_to friend.username, chat_path(room_finder(friend.id)), data: { turbo_frame: 'chat'}, class: 'friend__link ps-1 pe-3 text-decoration-none' %>
-            <div class="position-relative">
+          <li class="d-flex align-items-center"  data-controller="status" data-status-friendid="<%= friend.id %>">
+            <div data-status-target="status">
+                <%= link_to friend.username, chat_path(room_finder(friend.id)), data: { turbo_frame: 'chat'}, class: 'friend__link ps-1 pe-3 text-decoration-none' %>
+              <div class="position-relative">
                 <%= content_tag('span', '', class: sign_in_badget(friend.is_signed_in)) %>
+              </div>
             </div>
           </li>
         <% end %>
