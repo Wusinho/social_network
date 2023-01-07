@@ -1,6 +1,11 @@
 import consumer from "channels/consumer"
 
-consumer.subscriptions.create("UserStatusChannel", {
+let user_status = (user_id, user) => consumer.subscriptions.create(
+  {
+  channel: "UserStatusChannel",
+  user_id: user_id,
+  },
+   {
   connected() {
     // Called when the subscription is ready for use on the server
   },
@@ -10,6 +15,8 @@ consumer.subscriptions.create("UserStatusChannel", {
   },
 
   received(data) {
-    // Called when there's incoming data on the websocket for this channel
+    user.innerHTML = data.user
   }
 });
+
+export default user_status;

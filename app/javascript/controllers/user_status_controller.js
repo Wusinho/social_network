@@ -1,10 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
+import user_status from "../channels/user_status_channel";
 
 // Connects to data-controller="user-status"
 export default class extends Controller {
   static targets = ['userstatus']
 
   connect() {
-    console.log(this.data.get('userdid'))
+    let user_id = this.data.get('userdid')
+    user_status(user_id, this.userstatusTarget)
   }
 }

@@ -8,4 +8,6 @@ class Room < ApplicationRecord
     return room_2 if room_2.present?
   end
 
+
+
 end

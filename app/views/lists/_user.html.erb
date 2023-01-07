@@ -1,0 +1,4 @@
+<%= link_to friend.username, chat_path(friend.id), data: { turbo_frame: 'chat'}, class: 'friend__link ps-1 pe-3 text-decoration-none' %>
+<div class="position-relative">
+  <%= content_tag('span', '', class: sign_in_badget(friend.is_signed_in)) %>
+</div>
