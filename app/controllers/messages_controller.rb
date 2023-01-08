@@ -6,10 +6,11 @@ class MessagesController < ApplicationController
     if @message.save
       ActionCable.server.broadcast "room_channel_#{params[:message][:room_id]}",
                                    {
-        content: @message.content,
-        author_id: @message.user.id,
-        created_at: created_format(@message),
-        current_user: current_user.username,
+                                     message: send_correct_partial(@message)
+        # content: @message.content,
+        # author_id: @message.user.id,
+        # created_at: created_format(@message),
+        # current_user: current_user.username,
       }
     else
       puts 'not saved'
@@ -18,6 +19,18 @@ class MessagesController < ApplicationController
   end
 
   private
+
+  def send_correct_partial(message)
+    if my_message?(message)
+    MessagesController.render(partial: 'message/my_message', locals: { message: message})
+    else
+    MessagesController.render(partial: 'message/others_message', locals: { message: message})
+    end
+  end
+
+  def my_message?(message)
+    message.user_id == current_user.id
+  end
 
   def created_format(message)
     message_date = message.created_at.strftime('%Y-%m-%d').to_date
