@@ -1,7 +1,8 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-    if current_user && params[:room_id]
-      stream_from "room_channel_#{params[:room_id]}"
+    if current_user && params[:friend_id]
+      @room = Room.finder(current_user.id, params[:friend_id])
+      stream_from "room_channel_#{@room.id}"
     end
   end
 

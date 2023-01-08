@@ -1,9 +1,14 @@
 
 <div class="border border-success rounded p-2 chat__container ">
   <button type="button" class="btn-close" ></button>
-  <div id='chat__room' class=" chat__room" data-user-id="<%= current_user.id %>" data-room-id=<%=room.id %>>
+  <div id='chat__room' class=" chat__room" >
+
     <% room.messages.each do |message| %>
-      <%= render 'message_chat', message: message %>
+      <div data-controller="room-status" data-room-status-roomid="<%= room.id %>">
+        <div data-room-status-target="roomstatus">
+          <%= render 'message_chat', message: message %>
+        </div>
+      </div>
     <% end %>
   </div>
 

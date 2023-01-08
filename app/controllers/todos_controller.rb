@@ -21,7 +21,7 @@ class TodosController < ApplicationController
   end
 
   def chat
-    @room = Room.find_by(user_id: current_user.id, friend_id: params[:id])
+    @room = Room.finder(current_user.id, params[:id])
   end
 
   # POST /todos or /todos.json
