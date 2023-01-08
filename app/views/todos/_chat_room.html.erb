@@ -1,8 +1,8 @@
 
 <div class="border border-success rounded p-2 chat__container ">
   <button type="button" class="btn-close" ></button>
-  <div id='chat__room' class=" chat__room" data-user-id="<%= current_user.id %>" data-room-id="<%= room.id %>">
-    <% chat.each do |message| %>
+  <div id='chat__room' class=" chat__room" data-user-id="<%= current_user.id %>" data-room-id=<%=room.id %>>
+    <% room.messages.each do |message| %>
       <%= render 'message_chat', message: message %>
     <% end %>
   </div>
@@ -11,7 +11,7 @@
   <%= form_with(model: Message.new, id: "message_form") do |form| %>
     <div>
       <%= form.text_field :content, class: 'input__message' %>
-      <%= form.hidden_field :room_id, value: @room.id %>
+      <%= form.hidden_field :room_id, value: room.id %>
       <%= form.submit 'send', class: 'btn btn-primary btn__todo' %>
     </div>
   <% end %>

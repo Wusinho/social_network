@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
   belongs_to :user
+  has_many :messages
 
   def self.finder(user_id, friend_id)
     room_1 = Room.find_by(user_id: user_id, friend_id: friend_id)
@@ -7,7 +8,4 @@ class Room < ApplicationRecord
     room_2 = Room.find_by(user_id: friend_id, friend_id: user_id)
     return room_2 if room_2.present?
   end
-
-
-
 end
