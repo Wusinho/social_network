@@ -1,6 +1,6 @@
 class Room < ApplicationRecord
   belongs_to :user
-  has_many :messages
+  has_many :messages, -> () { order(created_at: :desc)}
 
   def self.finder(user_id, friend_id)
     room_1 = Room.find_by(user_id: user_id, friend_id: friend_id)

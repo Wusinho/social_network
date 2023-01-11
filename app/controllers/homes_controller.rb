@@ -3,6 +3,9 @@ class HomesController < ApplicationController
     @post = Post.new
     @posts = Post.newest_first
   end
+  def show
+
+  end
 
   def new
     @post = current_user.posts.new

@@ -20,8 +20,9 @@ friends_link.addEventListener('click', (e) => {
   received(data) {
     const chat_room = document.querySelector('.chat__room');
     let div = document.createElement('div')
-    div.innerHTML = data.message
-    chat_room.append(div)
+    const user_id = Number(chat_room.getAttribute('data-user-id'));
+    div.innerHTML = user_id === data.user_message_id ? data.mine : data.other
+    chat_room.prepend(div)
     const input_msg = document.querySelector('#message_form');
     input_msg.reset();
   }
